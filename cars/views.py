@@ -7,8 +7,16 @@ def cars(request):
     paginator = Paginator(cars,4)
     page = request.GET.get('page')
     paged_cars = paginator.get_page(page)
+    model_feilds = Car.objects.values_list('model',flat=True).distinct()
+    city_feilds = Car.objects.values_list('city',flat=True).distinct()
+    year_feilds = Car.objects.values_list('year',flat=True).distinct()
+    body_style_feilds = Car.objects.values_list('body_style',flat=True).distinct()
     data = {
         'cars' : paged_cars,
+        'model_feilds' : model_feilds,
+        'city_feilds' : city_feilds,
+        'year_feilds' : year_feilds,
+        'body_style_feilds' : body_style_feilds,
     }
     return render(request,'cars/cars.html',data)
 
@@ -21,6 +29,11 @@ def car_detail(request,id):
 
 def search(request):
     cars = Car.objects.order_by('-created_date')
+    model_feilds = Car.objects.values_list('model',flat=True).distinct()
+    city_feilds = Car.objects.values_list('city',flat=True).distinct()
+    year_feilds = Car.objects.values_list('year',flat=True).distinct()
+    body_style_feilds = Car.objects.values_list('body_style',flat=True).distinct()
+    transmission_feilds = Car.objects.values_list('transmission',flat=True).distinct()
     if 'keyword' in request.GET:
         keyword = request.GET['keyword']
         if keyword:
@@ -46,7 +59,15 @@ def search(request):
         max_price = request.GET['max_price']
         if max_price:
            cars = cars.filter(price__gte = min_price,price__lte = max_price)
+    if 'transmission' in request.GET:
+        transmission = request.GET['transmission']
+        if max_price:
+           cars = cars.filter(transmission__iexact = transmission)
     data = {
-        'cars' : cars
+        'cars' : cars,'model_feilds' : model_feilds,
+        'city_feilds' : city_feilds,
+        'year_feilds' : year_feilds,
+        'body_style_feilds' : body_style_feilds,
+        'transmission_feilds' : transmission_feilds,
     }
     return render(request,'cars/search.html',data)

@@ -24,43 +24,31 @@
                     <div class="row">
                         <div class="col-lg-3 col-md-6 col-sm-6 col-6">
                             <div class="form-group">
-                                <select class="selectpicker search-fields" name="select-brand">
-                                    <option disabled="disabled" selected="selected">Select Brand</option>
-                                    <option>Audi</option>
-                                    <option>BMW</option>
-                                    <option>Honda</option>
-                                    <option>Nissan</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-6">
-                            <div class="form-group">
-                                <select class="selectpicker search-fields" name="select-make">
+                                <select class="selectpicker search-fields" name="model">
                                     <option disabled="disabled" selected="selected">Select Make</option>
-                                    <option>BMW</option>
-                                    <option>Honda</option>
-                                    <option>Lamborghini Huracán</option>
-                                    <option>Sports Car</option>
+                                    {% for i in model_feilds %}
+                                        <option value="{{i}}">{{i}}</option>
+                                    {%endfor%}
                                 </select>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6 col-sm-6 col-6">
                             <div class="form-group">
-                                <select class="selectpicker search-fields" name="select-location">
+                                <select class="selectpicker search-fields" name="city">
                                     <option disabled="disabled" selected="selected">Select Location</option>
-                                    <option>United States</option>
-                                    <option>United Kingdom</option>
+                                    {% for i in city_feilds %}
+                                        <option value="{{i}}">{{i}}</option>
+                                    {%endfor%}
                                 </select>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6 col-sm-6 col-6">
                             <div class="form-group">
-                                <select class="selectpicker search-fields" name="select-year">
+                                <select class="selectpicker search-fields" name="year">
                                     <option disabled="disabled" selected="selected">Select Year</option>
-                                    <option>2016</option>
-                                    <option>2017</option>
-                                    <option>2018</option>
-                                    <option>2019</option>
+                                    {% for i in year_feilds %}
+                                        <option value="{{i}}">{{i}}</option>
+                                    {%endfor%}
                                 </select>
                             </div>
                         </div>
@@ -68,10 +56,11 @@
                     <div class="row">
                         <div class="col-lg-3 col-md-6 col-sm-6 col-6">
                             <div class="form-group">
-                                <select class="selectpicker search-fields" name="select-type">
+                                <select class="selectpicker search-fields" name="body_style">
                                     <option disabled="disabled" selected="selected">Select Type Of Car</option>
-                                    <option>New Car</option>
-                                    <option>Used Car</option>
+                                    {% for i in body_style_feilds %}
+                                        <option value="{{i}}">{{i}}</option>
+                                    {%endfor%}
                                 </select>
                             </div>
                         </div>
@@ -79,8 +68,9 @@
                             <div class="form-group">
                                 <select class="selectpicker search-fields" name="transmission">
                                     <option disabled="disabled" selected="selected">Transmission</option>
-                                    <option>Automatic</option>
-                                    <option>Manual</option>
+                                    {% for i in transmission_feilds %}
+                                        <option value="{{i}}">{{i}}</option>
+                                    {%endfor%}
                                 </select>
                             </div>
                         </div>
