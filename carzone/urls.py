@@ -25,6 +25,8 @@ urlpatterns = [
     path('cars',include('cars.urls')),
     path('accounts',include('accounts.urls')),
     path('socialaccounts',include('allauth.urls')),
+    path('contacts',include('contacts.urls')),
+
 ]
 
 
