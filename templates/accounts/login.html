@@ -49,9 +49,9 @@
                         <div class="clearfix"></div>
                         <div class="clearfix"></div>
                         <ul class="social-list">
-                            <!-- <li><a href="{% provider_login_url 'facebook' %}" class="facebook-bg"><i class="fa fa-facebook facebook-i"></i><span>Facebook</span></a></li> -->
                             <li><a href="{% provider_login_url 'google' %}" class="google-bg"><i class="fa fa-google google-i"></i><span>Google</span></a></li>
-                            <li><a href="{% url 'accounts:twitter_login' %}" class="twitter-bg"><i class="fa fa-twitter twitter-i"></i><span>Twitter</span></a></li>
+                            <!-- In your templates -->
+                            <!-- <li><a href="{% provider_login_url 'twitter' %}" class="twitter-bg"><i class="fa fa-twitter twitter-i"></i><span>Twitter</span></a></li> -->
                         </ul>
                     </form>
                     <p>Don't have an account? <a href="{% url 'accounts:register' %}" class="thembo"> Register here</a></p>
@@ -60,4 +60,11 @@
         </div>
     </div>
 </div>
+<!-- Add to your login.html template -->
+<script>
+// Check if redirected from Twitter with oauth_token but not back to our app
+if (window.location.href.includes('x.com/home') && document.referrer.includes('localhost')) {
+    window.location.href = 'http://localhost:8000/accounts/dashboard';
+}
+</script>
 {% endblock %}

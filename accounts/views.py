@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib import auth
 from contacts.models import Contact
+from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 import os
 from dotenv import load_dotenv
@@ -16,10 +17,10 @@ def login(request):
         if user is not None:
             auth.login(request, user)
             messages.success(request, "Successfully logged in.")
-            return redirect('dashboard')
+            return redirect('accounts:dashboard')
         else:
             messages.error(request, "Invalid login credentials.")
-            return redirect('login')
+            return redirect('accounts:login')
     return render(request, 'accounts/login.html')
 
 def register(request):
@@ -34,10 +35,10 @@ def register(request):
         if password == confirm_password:
             if User.objects.filter(username=username).exists():
                 messages.error(request, 'Username already exists')
-                return redirect('register')
+                return redirect('accounts:register')
             elif User.objects.filter(email=email).exists():
                 messages.error(request, 'Email already exists')
-                return redirect('register')
+                return redirect('accounts:register')
             else:
                 user = User.objects.create_user(
                     username=username,
@@ -46,22 +47,25 @@ def register(request):
                     first_name=firstname,
                     last_name=lastname
                 )
+                
+                user = auth.authenticate(username=username, password=password)
                 auth.login(request, user)
+                
                 messages.success(request, "You are now logged in.")
-                return redirect('dashboard')
+                return redirect('accounts:dashboard')
         else:
             messages.error(request, 'Passwords do not match.')
-            return redirect('register')
+            return redirect('accounts:register')
     else:
         return render(request, 'accounts/register.html')
-
+    
 def logout(request):
     if request.method == "POST":
         auth.logout(request)
         messages.success(request, "You have been logged out.")
         return redirect('home')
     return redirect('home')
-@login_required(login_url = 'login')
+@login_required(login_url='accounts:login')
 def dashboard(request):
     user_inquiry = Contact.objects.order_by('-create_date').filter(user_id = request.user.id)
     data  = {
@@ -72,11 +76,10 @@ def dashboard(request):
 def twitter_login(request):
     """Custom Twitter login view to bypass the MultipleObjectsReturned error"""
     from allauth.socialaccount.models import SocialApp
-    from allauth.socialaccount.providers.oauth2.client import OAuth2Client
-    from django.shortcuts import redirect
-    from django.urls import reverse
-    from django.conf import settings
     import requests
+    import base64
+    import hashlib
+    import secrets
     
     try:
         # Get the first Twitter app
@@ -84,8 +87,18 @@ def twitter_login(request):
         
         if not app:
             messages.error(request, "Twitter authentication is not configured")
-            return redirect('login')
+            return redirect('accounts:login')
             
+        # Create proper PKCE code verifier and challenge
+        code_verifier = secrets.token_urlsafe(64)[:128]
+        code_verifier_bytes = code_verifier.encode('ascii')
+        code_challenge = base64.urlsafe_b64encode(
+            hashlib.sha256(code_verifier_bytes).digest()
+        ).decode('ascii').rstrip('=')
+        
+        # Store code_verifier in session for later use in callback
+        request.session['twitter_code_verifier'] = code_verifier
+        
         # Create OAuth2 parameters
         redirect_uri = request.build_absolute_uri(reverse('accounts:twitter_callback'))
         
@@ -94,33 +107,35 @@ def twitter_login(request):
         
         # Required parameters
         params = {
-            'client_id': os.getenv('CLIENT_ID'),
-            'redirect_uri' : request.build_absolute_uri(reverse('accounts:twitter_callback')),
+            'client_id': app.client_id,  # Use app.client_id instead of env variable
+            'redirect_uri': redirect_uri,
             'response_type': 'code',
             'scope': 'tweet.read users.read offline.access',
-            'state': request.session.session_key or 'random-state',
-            'code_challenge': 'challenge',  # In production, use PKCE properly
-            'code_challenge_method': 'plain'
+            'state': secrets.token_urlsafe(32),  # Better state value
+            'code_challenge': code_challenge,
+            'code_challenge_method': 'S256'  # Use S256 instead of plain
         }
-        
-        # Build the authorization URL
-        auth_url = f"{auth_url}?{'&'.join([f'{k}={v}' for k, v in params.items()])}"
         
         # Store state in session for validation on callback
         request.session['twitter_oauth_state'] = params['state']
+        
+        # Build the authorization URL
+        auth_url = f"{auth_url}?{'&'.join([f'{k}={v}' for k, v in params.items()])}"
         
         # Redirect to Twitter authorization page
         return redirect(auth_url)
         
     except Exception as e:
         messages.error(request, f"Error connecting to Twitter: {str(e)}")
-        return redirect('login')
+        return redirect('accounts:login')
     
 
 
 def twitter_callback(request):
     """Handle the callback from Twitter OAuth"""
-    from allauth.socialaccount.models import SocialApp
+    from allauth.socialaccount.models import SocialApp, SocialAccount, SocialLogin
+    from django.contrib.auth import login
+    from django.contrib.auth.models import User
     import requests
     
     try:
@@ -131,7 +146,7 @@ def twitter_callback(request):
         # Verify state to prevent CSRF
         if state != request.session.get('twitter_oauth_state'):
             messages.error(request, "Invalid OAuth state")
-            return redirect('login')
+            return redirect('accounts:login')
             
         # Get the Twitter app
         app = SocialApp.objects.filter(provider='twitter').first()
@@ -147,7 +162,7 @@ def twitter_callback(request):
             'code': code,
             'grant_type': 'authorization_code',
             'redirect_uri': redirect_uri,
-            'code_verifier': 'challenge'  # In production, use PKCE properly
+            'code_verifier': request.session.get('twitter_code_verifier')  # Use stored code_verifier
         }
         
         # Get access token
@@ -156,7 +171,7 @@ def twitter_callback(request):
         
         if 'access_token' not in token_json:
             messages.error(request, "Failed to obtain access token")
-            return redirect('login')
+            return redirect('accounts:login')
             
         # Get user information
         user_url = 'https://api.twitter.com/2/users/me'
@@ -164,15 +179,50 @@ def twitter_callback(request):
         user_response = requests.get(user_url, headers=headers)
         user_json = user_response.json()
         
-        # Now you have the user information, you can:
-        # 1. Create or get a user in your system
-        # 2. Log them in
-        # 3. Redirect to dashboard
+        # Log the user information for debugging
+        print("Twitter user data:", user_json)
         
-        # For now, just redirect to dashboard (you'll need to implement the login part)
+        # Get or create user based on Twitter ID
+        twitter_id = user_json['data']['id']
+        twitter_username = user_json['data']['username']
+        
+        # Check if social account exists
+        social_account = SocialAccount.objects.filter(provider='twitter', uid=twitter_id).first()
+        
+        if social_account:
+            # If social account exists, log the user in
+            user = social_account.user
+        else:
+            # Create a new user
+            user_email = f"{twitter_username}@twitter.com"  # placeholder email
+            username = f"twitter_{twitter_username}"
+            
+            # Check if username exists
+            if User.objects.filter(username=username).exists():
+                username = f"{username}_{twitter_id}"
+            
+            # Create user
+            user = User.objects.create_user(
+                username=username,
+                email=user_email,
+                password=None  # Set unusable password
+            )
+            user.set_unusable_password()
+            user.save()
+            
+            # Create social account
+            social_account = SocialAccount.objects.create(
+                user=user,
+                provider='twitter',
+                uid=twitter_id,
+                extra_data=user_json['data']
+            )
+        
+        # Log the user in
+        login(request, user)
         messages.success(request, "Successfully logged in with Twitter")
-        return redirect('dashboard')
+        return redirect('accounts:dashboard')
         
     except Exception as e:
         messages.error(request, f"Error processing Twitter callback: {str(e)}")
-        return redirect('login')
+        return redirect('accounts:login')
