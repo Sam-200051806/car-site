@@ -29,7 +29,7 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     
     # Make sure this comes AFTER your custom accounts URLs
-    path('allauth/', include('allauth.urls')),  # Change this from 'accounts/' to 'allauth/'
+    path('accounts/', include('allauth.urls')),  # Change this from 'accounts/' to 'allauth/'
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
