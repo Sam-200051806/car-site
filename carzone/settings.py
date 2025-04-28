@@ -182,3 +182,45 @@ EMAIL_USE_SSL = False  # Use False if using TLS
 EMAIL_HOST_USER = 'carzone1806@gmail.com'
 EMAIL_HOST_PASSWORD = 'onovdkxaixykyzef'
 EMAIL_TIMEOUT = 30  # Adjust as needed
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+# SOCIALACCOUNT_PROVIDERS = {
+#     'twitter': {
+#         'APP': {
+#             'id' : 3,
+#             'client_id': 'OXhfSHhQbDNVdzNpalhtZzBWRFI6MTpjaQ',
+#             'secret': 'SpC2Y2KdI21obQnu4nUAc1AYwwlC5UNX_7nigeWW78lwSSlsQn',
+#         },
+#         'AUTH_PARAMS': {
+#             'response_type': 'code',
+#         },
+#         'SCOPE': ['tweet.read', 'users.read', 'offline.access'],
+#     }
+# }
+
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
+#     'handlers': {
+#         'console': {
+#             'class': 'logging.StreamHandler',
+#         },
+#     },
+#     'loggers': {
+#         'django': {
+#             'handlers': ['console'],
+#             'level': 'DEBUG',
+#         },
+#         'allauth': {
+#             'handlers': ['console'],
+#             'level': 'DEBUG',
+#         },
+#     },
+# }
+
+ACCOUNT_LOGOUT_ON_GET = True
+SOCIALACCOUNT_ADAPTER = "allauth.socialaccount.adapter.DefaultSocialAccountAdapter"

@@ -30,7 +30,7 @@
                     </div>
                     <h3>Sign into your account</h3>
                     {% include 'includes/messages.html' %}
-                    <form action="{% url 'login' %}" method="POST">
+                    <form action="{% url 'accounts:login' %}" method="POST">
                         {% csrf_token %}
                         <div class="form-group form-box">
                             <input type="text" name="username" class="input-text" placeholder="username" required>
@@ -47,16 +47,14 @@
                             <span>Or Login With</span>
                         </div>
                         <div class="clearfix"></div>
+                        <div class="clearfix"></div>
                         <ul class="social-list">
                             <li><a href="{% provider_login_url 'facebook' %}" class="facebook-bg"><i class="fa fa-facebook facebook-i"></i><span>Facebook</span></a></li>
                             <li><a href="{% provider_login_url 'google' %}" class="google-bg"><i class="fa fa-google google-i"></i><span>Google</span></a></li>
+                            <li><a href="{% url 'accounts:twitter_login' %}" class="twitter-bg"><i class="fa fa-twitter twitter-i"></i><span>Twitter</span></a></li>
                         </ul>
-                        <!-- Add this where your social login buttons are -->
-                        <a href="{% provider_login_url 'twitter' %}" class="btn btn-primary btn-block">
-                            <i class="fab fa-twitter"></i> Login with Twitter
-                        </a>
                     </form>
-                    <p>Don't have an account? <a href="{% url 'register' %}" class="thembo"> Register here</a></p>
+                    <p>Don't have an account? <a href="{% url 'accounts:register' %}" class="thembo"> Register here</a></p>
                 </div>
             </div>
         </div>

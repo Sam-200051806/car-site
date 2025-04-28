@@ -26,6 +26,9 @@ urlpatterns = [
     path('accounts',include('accounts.urls')),
     path('socialaccounts',include('allauth.urls')),
     path('contacts',include('contacts.urls')),
+    path('socialaccounts', include('allauth.socialaccount.urls')), 
+    # Add these lines for allauth URLs
+    path('accounts/', include('allauth.urls')),
 
 ]
 

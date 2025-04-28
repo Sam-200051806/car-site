@@ -17,7 +17,7 @@
                     </li>
                     <li>
                         <a href="javascript:{document.getElementById('logout').submit()}" class="sign-in"><i class="fa fa-sign-out"></i> Logout</a>
-                        <form action="{% url 'logout' %}" id="logout" method="POST" >
+                        <form action="{% url 'accounts:logout' %}" id="logout" method="POST">
                             {% csrf_token %}
 
                             <!-- <input type="hidden"> -->
@@ -25,10 +25,10 @@
                     </li>
                     {% else %}
                     <li>
-                        <a href="{% url 'login' %}" class="sign-in"><i class="fa fa-sign-in"></i> Login</a>
+                        <a href="{% url 'accounts:login' %}" class="sign-in"><i class="fa fa-sign-in"></i> Login</a>
                     </li>
                     <li>
-                        <a href="{%url 'register'%}" class="sign-in"><i class="fa fa-user"></i> Register</a>
+                        <a href="{% url 'accounts:register' %}" class="sign-in"><i class="fa fa-user"></i> Register</a>
                     </li>
                 </ul>
                 {% endif %}

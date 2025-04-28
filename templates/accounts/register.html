@@ -29,7 +29,7 @@
                     </div>
                     <h3>Create an account</h3>
                     {% include 'includes/messages.html' %}
-                    <form action="{% url 'register' %}" method="POST">
+                    <form action="{% url 'accounts:register' %}" method="POST">
                         {% csrf_token %}
                         <div class="form-group form-box">
                             <input type="text" name="firstname" required class="input-text" placeholder="First Name">
@@ -66,11 +66,10 @@
                             <li><a href="{% provider_login_url 'facebook' %}" class="facebook-bg"><i class="fa fa-facebook facebook-i"></i><span>Facebook</span></a></li>
 
                             <li><a href="{% provider_login_url 'google' %}" class="google-bg"><i class="fa fa-google google-i"></i><span>Google</span></a></li>
-                            
-                            <li><a href="{% provider_login_url 'twitter' %}" class="twitter-bg"><i class="fa fa-twitter twitter-i"></i><span>Twitter</span></a></li>
+
                         </ul>
                     </form>
-                    <p>Already a member? <a href="{% url 'login' %}" class="thembo"> Login here</a></p>
+                    <p>Already a member? <a href="{% url 'accounts:login' %}" class="thembo"> Login here</a></p>
                 </div>
             </div>
         </div>
