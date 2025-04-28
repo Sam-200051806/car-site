@@ -62,3 +62,6 @@ def contact(request):
 
 def privacy_policy(request):
     return render(request, 'pages/privacy_policy.html')
+
+def data_deletion(request):
+    return render(request, 'pages/data_deletion.html')
