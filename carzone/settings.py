@@ -37,7 +37,7 @@ ALLOWED_HOSTS = [
     '.koyeb.app',  # Allows all Koyeb subdomains
     'crazy-mable-mysite1806-f1a2ca21.koyeb.app',  # Your actual app domain
 ]
-LOGIN_REDIRECT_URL = 'dashboard'
+LOGIN_REDIRECT_URL = 'accounts:dashboard'
 
 # Application definition
 
@@ -188,39 +188,6 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
-# SOCIALACCOUNT_PROVIDERS = {
-#     'twitter': {
-#         'APP': {
-#             'id' : 3,
-#             'client_id': 'OXhfSHhQbDNVdzNpalhtZzBWRFI6MTpjaQ',
-#             'secret': 'SpC2Y2KdI21obQnu4nUAc1AYwwlC5UNX_7nigeWW78lwSSlsQn',
-#         },
-#         'AUTH_PARAMS': {
-#             'response_type': 'code',
-#         },
-#         'SCOPE': ['tweet.read', 'users.read', 'offline.access'],
-#     }
-# }
-
-# LOGGING = {
-#     'version': 1,
-#     'disable_existing_loggers': False,
-#     'handlers': {
-#         'console': {
-#             'class': 'logging.StreamHandler',
-#         },
-#     },
-#     'loggers': {
-#         'django': {
-#             'handlers': ['console'],
-#             'level': 'DEBUG',
-#         },
-#         'allauth': {
-#             'handlers': ['console'],
-#             'level': 'DEBUG',
-#         },
-#     },
-# }
 
 ACCOUNT_LOGOUT_ON_GET = True
 SOCIALACCOUNT_ADAPTER = "allauth.socialaccount.adapter.DefaultSocialAccountAdapter"

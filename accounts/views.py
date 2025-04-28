@@ -4,6 +4,9 @@ from django.contrib.auth.models import User
 from django.contrib import auth
 from contacts.models import Contact
 from django.contrib.auth.decorators import login_required
+import os
+from dotenv import load_dotenv
+load_dotenv()
 def login(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -91,7 +94,7 @@ def twitter_login(request):
         
         # Required parameters
         params = {
-            'client_id': "OXhfSHhQbDNVdzNpalhtZzBWRFI6MTpjaQ",
+            'client_id': os.getenv('CLIENT_ID'),
             'redirect_uri' : request.build_absolute_uri(reverse('accounts:twitter_callback')),
             'response_type': 'code',
             'scope': 'tweet.read users.read offline.access',

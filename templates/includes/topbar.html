@@ -13,7 +13,7 @@
                 <ul class="top-social-media pull-right">
                     {% if user.is_authenticated %}
                     <li>
-                        <a href="{% url 'dashboard' %}" class="sign-in"><i class="fa fa-tachometer"></i> Dashboard</a>
+                        <a href="{% url 'accounts:dashboard' %}" class="sign-in"><i class="fa fa-tachometer"></i> Dashboard</a>
                     </li>
                     <li>
                         <a href="javascript:{document.getElementById('logout').submit()}" class="sign-in"><i class="fa fa-sign-out"></i> Logout</a>
