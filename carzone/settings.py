@@ -35,8 +35,7 @@ ALLOWED_HOSTS = [
     '127.0.0.1', 
     '[::1]',
     '.koyeb.app',  # Allows all Koyeb subdomains
-    'your-app-name.koyeb.app',  # Replace with your actual Koyeb app name
-    # Add any custom domains you're using
+    'crazy-mable-mysite1806-f1a2ca21.koyeb.app',  # Your actual app domain
 ]
 LOGIN_REDIRECT_URL = 'dashboard'
 
