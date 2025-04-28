@@ -59,3 +59,6 @@ def contact(request):
         messages.success(request,"Thank you for contacting us. We will get back to you very shortly")
         return redirect('contact')
     return render(request,'pages/contact.html')
+
+def privacy_policy(request):
+    return render(request, 'pages/privacy_policy.html')
