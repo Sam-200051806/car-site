@@ -78,7 +78,7 @@ ul {
 }
 
 .twitter-bg {
-    background: #33CCFF;
+    background: #1da1f2;
     color: #fff;
 }
 
@@ -5626,7 +5626,7 @@ footer {
     border-radius: 3px;
 }
 
-.contact-section .form-section .form-box .fa-user {
+.contact-section .form-section .fa-user {
     position: absolute;
     top: 15px;
     left: 20px;
@@ -5793,6 +5793,15 @@ footer {
 
 .contact-section .twitter-i {
     background: #0cace0;
+}
+
+/* Add to your main CSS file */
+.twitter-bg {
+    background: #1da1f2;
+}
+
+.twitter-i {
+    background: #0c85d0;
 }
 
 @media (max-width: 500px) {
@@ -8503,12 +8512,6 @@ table {
         font-size: 42px;
     }
 
-    .banner h5 {
-        font-size: 18px;
-        line-height: 30px;
-        margin-bottom: 20px;
-    }
-
     .sb-2{
         display: flex;
     }
@@ -8679,16 +8682,6 @@ table {
 
     .banner-slider-inner .row-4{
         margin: 0;
-    }
-
-    .inline-search-area .search-col {
-        padding: 0 15px;
-        margin-bottom: 15px;
-    }
-
-    .row-3 {
-        margin-right: -15px;
-        margin-left: -15px;
     }
 
     .inline-search-area .bootstrap-select button {
@@ -9149,7 +9142,7 @@ table {
         padding: 60px 0 30px;
     }
 
-    .counter-box-2 {
+    .counter-box-2{
         position: relative;
         max-width: 300px;
         margin: 0 auto 30px;
