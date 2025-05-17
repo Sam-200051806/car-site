@@ -22,7 +22,7 @@ def inquiry(request):
             has_contacted = Contact.objects.all().filter(car_id = car_id,user_id = user_i)
             if has_contacted:
                 messages.error(request,"you have already made an enquiry about this car . please wait until we gae back to you !")
-                return redirect('/cars' + car_id)
+                return redirect('/cars/' + car_id)
 
         contact = Contact(car_id = car_id,car_title = car_title,user_id = user_id,first_name = first_name,last_name= last_name,customer_need = customer_need,city = city,state = state,email = email,phone = phone,message = message)
         admin_info = User.objects.get(is_superuser = True)
