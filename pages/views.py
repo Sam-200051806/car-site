@@ -45,8 +45,10 @@ def contact(request):
         subject = request.POST['subject']
         phone = request.POST['phone']
         message = request.POST['message']
+
+        # Email to admin
         email_subject = "You have a new message from Carzone website regarding " + subject
-        message_body = 'Name' + name + ', Email : ' + email + ' , Phone : ' + phone + ' , Message : ' + message
+        message_body = 'Name: ' + name + ', Email: ' + email + ', Phone: ' + phone + ', Message: ' + message
         admin_info = User.objects.get(is_superuser = True)
         admin_email = admin_info.email
         send_mail(
@@ -56,7 +58,35 @@ def contact(request):
             [admin_email],
             fail_silently=False,
         )
-        messages.success(request,"Thank you for contacting us. We will get back to you very shortly")
+
+        user_email_subject = "Your Contact Request - Carzone"
+        user_email_message = f"""
+Hello {name},
+
+Thank you for contacting Carzone regarding "{subject}".
+
+We have received your message and our team will review it shortly. Here's a summary of your contact request:
+
+Subject: {subject}
+Message: {message}
+
+We appreciate your interest and will get back to you as soon as possible.
+
+Thank you for choosing Carzone!
+
+Best regards,
+The Carzone Team
+        """
+
+        send_mail(
+            user_email_subject,
+            user_email_message,
+            "carzone1806@gmail.com",
+            [email],
+            fail_silently=False,
+        )
+
+        messages.success(request,"Thank you for contacting us. We will get back to you very shortly. A confirmation email has been sent to your email address.")
         return redirect('contact')
     return render(request,'pages/contact.html')
 
