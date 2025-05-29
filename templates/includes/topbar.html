@@ -2,36 +2,34 @@
 <header class="top-header th-2 top-header-bg">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-md-8 col-sm-7">
+            <div class="col-lg-8 col-md-8 col-sm-12 col-12">
                 <div class="list-inline">
-                    <a href="tel:+91-941-187-4005"><i class="fa fa-phone"></i>+91-941-187-4005</a>
-                    <a href="tel:sambhavseth1806@gmail.com"><i class="fa fa-envelope"></i>sambhavseth1806@gmail.com</a>
-                    <a href="tel:sambhavseth1806@gmail.com"><i class="fa fa-clock-o"></i>Mon - Sun: 8:00am - 6:00pm</a>
+                    <a href="tel:+91-941-187-4005"><i class="fa fa-phone"></i><span class="d-none d-sm-inline">+91-941-187-4005</span><span class="d-sm-none">Call</span></a>
+                    <a href="mailto:sambhavseth1806@gmail.com"><i class="fa fa-envelope"></i><span class="d-none d-md-inline">sambhavseth1806@gmail.com</span><span class="d-md-none">Email</span></a>
+                    <a href="#"><i class="fa fa-clock-o"></i><span class="d-none d-lg-inline">Mon - Sun: 8:00am - 6:00pm</span><span class="d-lg-none">Hours</span></a>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-5">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-12">
                 <ul class="top-social-media pull-right">
                     {% if user.is_authenticated %}
                     <li>
-                        <a href="{% url 'accounts:dashboard' %}" class="sign-in"><i class="fa fa-tachometer"></i> Dashboard</a>
+                        <a href="{% url 'accounts:dashboard' %}" class="sign-in"><i class="fa fa-tachometer"></i> <span class="d-none d-sm-inline">Dashboard</span></a>
                     </li>
                     <li>
-                        <a href="javascript:{document.getElementById('logout').submit()}" class="sign-in"><i class="fa fa-sign-out"></i> Logout</a>
+                        <a href="javascript:{document.getElementById('logout').submit()}" class="sign-in"><i class="fa fa-sign-out"></i> <span class="d-none d-sm-inline">Logout</span></a>
                         <form action="{% url 'accounts:logout' %}" id="logout" method="POST">
                             {% csrf_token %}
-
-                            <!-- <input type="hidden"> -->
                         </form>
                     </li>
                     {% else %}
                     <li>
-                        <a href="{% url 'accounts:login' %}" class="sign-in"><i class="fa fa-sign-in"></i> Login</a>
+                        <a href="{% url 'accounts:login' %}" class="sign-in"><i class="fa fa-sign-in"></i> <span class="d-none d-sm-inline">Login</span></a>
                     </li>
                     <li>
-                        <a href="{% url 'accounts:register' %}" class="sign-in"><i class="fa fa-user"></i> Register</a>
+                        <a href="{% url 'accounts:register' %}" class="sign-in"><i class="fa fa-user"></i> <span class="d-none d-sm-inline">Register</span></a>
                     </li>
+                    {% endif %}
                 </ul>
-                {% endif %}
             </div>
         </div>
     </div>

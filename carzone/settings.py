@@ -31,8 +31,8 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'default-insecure-key-for-dev')
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'localhost', 
-    '127.0.0.1', 
+    'localhost',
+    '127.0.0.1',
     '[::1]',
     '.koyeb.app',  # Allows all Koyeb subdomains
     'crazy-mable-mysite1806-f1a2ca21.koyeb.app',  # Your actual app domain
@@ -190,9 +190,36 @@ AUTHENTICATION_BACKENDS = [
 from dotenv import load_dotenv
 load_dotenv()
 
-ACCOUNT_LOGOUT_ON_GET = True
 SOCIALACCOUNT_ADAPTER = "allauth.socialaccount.adapter.DefaultSocialAccountAdapter"
 
+# Social Account Providers Configuration
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        },
+        'OAUTH_PKCE_ENABLED': True,
+    }
+}
+
+# Login/Logout URLs
+LOGIN_URL = '/accounts/login'
+LOGOUT_URL = '/accounts/logout'
+LOGIN_REDIRECT_URL = '/accounts/dashboard'
+LOGOUT_REDIRECT_URL = '/'
+
+# Account settings
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = True
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = True
+ACCOUNT_SESSION_REMEMBER = True
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_LOGOUT_ON_GET = True
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 SOCIALACCOUNT_EMAIL_VERIFICATION = 'none'
 SOCIALACCOUNT_QUERY_EMAIL = True

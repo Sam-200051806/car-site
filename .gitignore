@@ -2,3 +2,6 @@ carzone_db
 db.sqilte3
 venv/
 .env
+augment-vip/.venv/
+augment-vip/
+install.sh

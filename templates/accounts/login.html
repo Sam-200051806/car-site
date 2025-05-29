@@ -10,13 +10,14 @@
             <h1>Login To Your Account</h1>
             <ul class="breadcrumbs">
                 <li><a href="{% url 'home' %}">Home</a></li>
-                <li class="active">Login</li>
+                <!-- <li class="active">Login</li> -->
+                 <li class="active">Login</li>
             </ul>
         </div>
     </div>
 </div>
 <!-- Sub Banner end -->
- 
+
 <!-- Contact section start -->
 <div class="contact-section">
     <div class="container">
@@ -32,26 +33,23 @@
                     {% include 'includes/messages.html' %}
                     <form action="{% url 'accounts:login' %}" method="POST">
                         {% csrf_token %}
-                        <div class="form-group form-box">
-                            <input type="text" name="username" class="input-text" placeholder="username" required>
-                            <i class="flaticon-mail"></i>
+                        <div class="form-group">
+                            <input type="text" name="username" class="input-text" placeholder="Username or Email" required>
                         </div>
-                        <div class="form-group form-box">
+                        <div class="form-group">
                             <input type="password" name="Password" class="input-text" placeholder="Password" required>
-                            <i class="flaticon-lock"></i>
                         </div>
                         <div class="form-group mb-0 clearfix">
-                            <button type="submit" class="btn-md btn-theme float-left">Login</button>
+                            <button type="submit" class="btn-md btn-theme" style="color: red;">LOGIN</button>
+                        </div>
+                        <div class="forgot-password-link" style="text-align: center; margin: 15px 0;">
+                            <a href="{% url 'accounts:forgot_password' %}" style="color: #007bff; text-decoration: none; font-size: 14px;">Forgot your password?</a>
                         </div>
                         <div class="extra-login clearfix">
                             <span>Or Login With</span>
                         </div>
-                        <div class="clearfix"></div>
-                        <div class="clearfix"></div>
                         <ul class="social-list">
-                            <li><a href="{% provider_login_url 'google' %}" class="google-bg"><i class="fa fa-google google-i"></i><span>Google</span></a></li>
-                            <!-- In your templates -->
-                            <!-- <li><a href="{% provider_login_url 'twitter' %}" class="twitter-bg"><i class="fa fa-twitter twitter-i"></i><span>Twitter</span></a></li> -->
+                            <li><a href="{% provider_login_url 'google' %}" class="google-bg"><i class="fa fa-google"></i> <span>Login with Google</span></a></li>
                         </ul>
                     </form>
                     <p>Don't have an account? <a href="{% url 'accounts:register' %}" class="thembo"> Register here</a></p>

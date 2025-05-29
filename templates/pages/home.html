@@ -38,50 +38,66 @@
         <!-- Search box 3 start -->
         <div class="search-box-4 sb-8">
             <form action="{% url 'search' %}" method="">
-                <div class="form-group">
-                    <input type="text" name="keyword" placeholder="Search by name" class="form-control">
-                </div>
-                <div class="form-group">
-                    <select class="form-control search-fields" name="model">
-                        <option selected="true" disabled="disabled">Model</option>
-                        {% for i in model_feilds %}
-                          <option value="{{i}}">{{i}}</option>
-                        {%endfor%}
-                    </select>
-                </div>
-                <div class="form-group">
-                    <select class="form-control search-fields" name="city">
-                        <option selected="true" disabled="disabled">Location</option>
-                        {% for i in city_feilds %}
-                          <option value="{{i}}">{{i}}</option>
-                        {%endfor%}
-                    </select>
-                </div>
-                <div class="form-group">
-                    <select class="form-control search-fields" name="year">
-                        <option selected="true" disabled="disabled">Year</option>
-                        {% for i in year_feilds %}
-                          <option value="{{i}}">{{i}}</option>
-                        {%endfor%}
-                    </select>
-                </div>
-                <div class="form-group">
-                    <select class="form-control search-fields" name="body_style">
-                        <option selected="true" disabled="disabled">Select Type Of Car</option>
-                        {% for i in body_style_feilds %}
-                          <option value="{{i}}">{{i}}</option>
-                        {%endfor%}
-                    </select>
-                </div>
-                <div class="range-slider clearfix">
-                                <label>Price</label>
-                                <div data-min="0" data-max="150000"  data-min-name="min_price" data-max-name="max_price" data-unit="USD" class="range-slider-ui ui-slider" aria-disabled="false"></div>
-                                <div class="clearfix"></div>
-                            </div>
-                <div class="form-group">
-                    <button class="btn btn-block button-theme btn-md">
-                        <i class="fa fa-search"></i> Search
-                    </button>
+                <div class="row">
+                    <div class="col-md-6 col-12">
+                        <div class="form-group">
+                            <input type="text" name="keyword" placeholder="Search by name" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <div class="form-group">
+                            <select class="form-control search-fields" name="model">
+                                <option selected="true" disabled="disabled">Model</option>
+                                {% for i in model_feilds %}
+                                  <option value="{{i}}">{{i}}</option>
+                                {%endfor%}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <div class="form-group">
+                            <select class="form-control search-fields" name="city">
+                                <option selected="true" disabled="disabled">Location</option>
+                                {% for i in city_feilds %}
+                                  <option value="{{i}}">{{i}}</option>
+                                {%endfor%}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <div class="form-group">
+                            <select class="form-control search-fields" name="year">
+                                <option selected="true" disabled="disabled">Year</option>
+                                {% for i in year_feilds %}
+                                  <option value="{{i}}">{{i}}</option>
+                                {%endfor%}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <select class="form-control search-fields" name="body_style">
+                                <option selected="true" disabled="disabled">Select Type Of Car</option>
+                                {% for i in body_style_feilds %}
+                                  <option value="{{i}}">{{i}}</option>
+                                {%endfor%}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="range-slider clearfix">
+                            <label>Price</label>
+                            <div data-min="0" data-max="150000"  data-min-name="min_price" data-max-name="max_price" data-unit="USD" class="range-slider-ui ui-slider" aria-disabled="false"></div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <button class="btn btn-block button-theme btn-md">
+                                <i class="fa fa-search"></i> Search
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </form>
         </div>
@@ -165,8 +181,8 @@
                             </ul>
                         </div>
                     </div>
-                </div>    
-                {% endfor %}    
+                </div>
+                {% endfor %}
             </div>
             <div class="slick-btn">
                 <div class="slick-prev slick-arrow-buton sab-4">

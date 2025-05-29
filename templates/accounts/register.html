@@ -31,42 +31,32 @@
                     {% include 'includes/messages.html' %}
                     <form action="{% url 'accounts:register' %}" method="POST">
                         {% csrf_token %}
-                        <div class="form-group form-box">
+                        <div class="form-group">
                             <input type="text" name="firstname" required class="input-text" placeholder="First Name">
-                            <i class="fa fa-user"></i>
                         </div>
-                        <div class="form-group form-box">
+                        <div class="form-group">
                             <input type="text" name="lastname" required class="input-text" placeholder="Last Name">
-                            <i class="fa fa-user"></i>
                         </div>
-                        <div class="form-group form-box">
+                        <div class="form-group">
                             <input type="text" name="username" required class="input-text" placeholder="Username">
-                            <i class="fa fa-user"></i>
                         </div>
-                        <div class="form-group form-box">
+                        <div class="form-group">
                             <input type="email" name="email" required class="input-text" placeholder="Email Address">
-                            <i class="flaticon-mail"></i>
                         </div>
-                        <div class="form-group form-box">
+                        <div class="form-group">
                             <input type="password" name="password" required class="input-text" placeholder="Password">
-                            <i class="flaticon-lock"></i>
                         </div>
-                        <div class="form-group form-box">
+                        <div class="form-group">
                             <input type="password" name="confirm_password" required class="input-text" placeholder="Confirm Password">
-                            <i class="flaticon-lock"></i>
                         </div>
                         <div class="form-group mb-0 clearfix">
-                            <button type="submit" class="btn-md btn-theme float-left">Register</button>
+                            <button type="submit" class="btn-md btn-theme">REGISTER</button>
                         </div>
                         <div class="extra-login clearfix">
-                            <span>Or Login With</span>
+                            <span>Or Register With</span>
                         </div>
-                        <div class="clearfix"></div>
                         <ul class="social-list">
-                            <!-- <li><a href="{% provider_login_url 'facebook' %}" class="facebook-bg"><i class="fa fa-facebook facebook-i"></i><span>Facebook</span></a></li> -->
-
-                            <li><a href="{% provider_login_url 'google' %}" class="google-bg"><i class="fa fa-google google-i"></i><span>Google</span></a></li>
-                            <!-- <li><a href="{% url 'accounts:twitter_login' %}" class="twitter-bg"><i class="fa fa-twitter twitter-i"></i><span>Twitter</span></a></li> -->
+                            <li><a href="{% provider_login_url 'google' %}" class="google-bg"><i class="fa fa-google"></i> <span>Register with Google</span></a></li>
                         </ul>
                     </form>
                     <p>Already a member? <a href="{% url 'accounts:login' %}" class="thembo"> Login here</a></p>

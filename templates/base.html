@@ -6,8 +6,9 @@
     <title>Car Zone | {% block title %}
         {% endblock %}
     </title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no">
 
     <!-- External CSS libraries -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
@@ -28,6 +29,8 @@
     <!-- Custom stylesheet -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" type="text/css" id="style_sheet" href="{% static 'css/skins/red.css' %}">
+    <!-- Mobile responsive CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/mobile-responsive.css' %}">
 
     <!-- Favicon icon -->
     <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon" >
@@ -59,7 +62,7 @@
 
 {% block content %}
 
-    
+
 {% endblock %}
 {% include 'includes/footer.html' %}
 <script src="{% static 'js/jquery-2.2.0.min.js' %}"></script>

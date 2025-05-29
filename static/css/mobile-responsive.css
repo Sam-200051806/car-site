@@ -1,0 +1,1019 @@
+/* Mobile Responsive CSS for Carzone Website */
+
+/* General Form Fixes for All Devices */
+.form-section {
+    background: #fff !important;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    padding: 30px;
+    margin: 20px auto;
+    max-width: 500px;
+}
+
+.form-section h3 {
+    color: #333 !important;
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.form-box {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-text {
+    color: #333 !important;
+    background: #fff !important;
+    border: 2px solid #ddd !important;
+    padding: 15px 20px !important;
+    border-radius: 6px;
+    width: 100%;
+    height: 50px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.input-text:focus {
+    border-color: #dc3545 !important;
+    outline: none;
+    box-shadow: 0 0 8px rgba(220, 53, 69, 0.3);
+}
+
+.input-text::placeholder {
+    color: #999 !important;
+}
+
+.form-box i {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999 !important;
+    font-size: 16px;
+    z-index: 10;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.form-box:hover i {
+    color: #dc3545 !important;
+    opacity: 1;
+}
+
+.form-box .input-text:focus + i {
+    color: #dc3545 !important;
+    opacity: 1;
+}
+
+.btn-theme {
+    background: #dc3545 !important;
+    color: #fff !important;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.btn-theme:hover {
+    background: #c82333 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+}
+
+.extra-login {
+    text-align: center;
+    margin: 25px 0;
+    position: relative;
+}
+
+.extra-login span {
+    color: #666 !important;
+    font-size: 14px;
+    background: #fff;
+    padding: 0 15px;
+    position: relative;
+    z-index: 2;
+}
+
+.extra-login::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #ddd;
+    z-index: 1;
+}
+
+.social-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0 0;
+}
+
+.social-list li {
+    margin-bottom: 12px;
+}
+
+.social-list li a {
+    color: #fff !important;
+    padding: 14px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    font-size: 15px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.social-list li a:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.google-bg {
+    background: #dc3545 !important;
+    border: 1px solid #dc3545 !important;
+    color: #fff !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 12px 20px !important;
+    border-radius: 6px !important;
+    text-decoration: none !important;
+    font-weight: 500 !important;
+    transition: all 0.3s ease !important;
+    margin-bottom: 10px !important;
+}
+
+.google-bg:hover {
+    background: #c82333 !important;
+    border-color: #c82333 !important;
+    color: #fff !important;
+    text-decoration: none !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3) !important;
+}
+
+.google-bg i {
+    margin-right: 10px !important;
+    font-size: 16px !important;
+}
+
+.facebook-bg {
+    background: #1877f2 !important;
+    border: 1px solid #1877f2 !important;
+    color: #fff !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 12px 20px !important;
+    border-radius: 6px !important;
+    text-decoration: none !important;
+    font-weight: 500 !important;
+    transition: all 0.3s ease !important;
+    margin-bottom: 10px !important;
+}
+
+.facebook-bg:hover {
+    background: #166fe5 !important;
+    border-color: #166fe5 !important;
+    color: #fff !important;
+    text-decoration: none !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 12px rgba(24, 119, 242, 0.3) !important;
+}
+
+.facebook-bg i {
+    margin-right: 10px !important;
+    font-size: 16px !important;
+}
+
+.twitter-bg {
+    background: #1da1f2 !important;
+    border: 1px solid #1da1f2 !important;
+    color: #fff !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 12px 20px !important;
+    border-radius: 6px !important;
+    text-decoration: none !important;
+    font-weight: 500 !important;
+    transition: all 0.3s ease !important;
+    margin-bottom: 10px !important;
+}
+
+.twitter-bg:hover {
+    background: #1991db !important;
+    border-color: #1991db !important;
+    color: #fff !important;
+    text-decoration: none !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 12px rgba(29, 161, 242, 0.3) !important;
+}
+
+.twitter-bg i {
+    margin-right: 10px !important;
+    font-size: 16px !important;
+}
+
+.form-section p {
+    text-align: center;
+    margin-top: 25px;
+    color: #666 !important;
+    font-size: 15px;
+}
+
+.form-section p a {
+    color: #007bff !important;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.form-section p a:hover {
+    text-decoration: underline;
+}
+
+.contact-section {
+    background: #f8f9fa !important;
+    padding: 60px 0;
+}
+
+/* Banner Button Fixes for All Devices */
+.carousel-content .btn-lg {
+    display: inline-block !important;
+    width: auto !important;
+    min-height: auto !important;
+    padding: 15px 30px !important;
+    font-size: 16px !important;
+    background: #dc3545 !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: 6px !important;
+    text-decoration: none !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+    margin-top: 20px !important;
+    line-height: 1.4 !important;
+}
+
+.carousel-content .btn-lg:hover {
+    background: #c82333 !important;
+    transform: translateY(-2px) !important;
+    text-decoration: none !important;
+    color: #fff !important;
+    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3) !important;
+}
+
+.carousel-content .btn-lg:focus,
+.carousel-content .btn-lg:active {
+    background: #c82333 !important;
+    color: #fff !important;
+    outline: none !important;
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.25) !important;
+}
+
+/* Ensure banner content is properly positioned */
+.carousel-content {
+    position: relative;
+    z-index: 2;
+}
+
+.carousel-content h3,
+.carousel-content h5 {
+    color: #fff !important;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.carousel-content h3 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.carousel-content h5 {
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+/* General Mobile Optimizations */
+@media (max-width: 768px) {
+
+    /* Base adjustments */
+    body {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    /* Header and Navigation */
+    .top-header {
+        padding: 10px 0;
+    }
+
+    .top-header .list-inline a {
+        font-size: 12px;
+        margin-right: 10px;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .top-social-media {
+        text-align: center !important;
+        margin-top: 10px;
+    }
+
+    .main-header {
+        padding: 10px 0;
+    }
+
+    .navbar-brand img {
+        max-height: 40px;
+        width: auto;
+    }
+
+    .navbar-toggler {
+        border: none;
+        padding: 4px 8px;
+        font-size: 18px;
+    }
+
+    .navbar-nav {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .navbar-nav .nav-link {
+        padding: 10px 15px !important;
+        font-size: 16px;
+    }
+
+    /* Banner Section */
+    .banner {
+        height: auto;
+        min-height: 400px;
+    }
+
+    .banner-max-height {
+        height: 400px !important;
+    }
+
+    .carousel-content {
+        padding: 20px 15px;
+    }
+
+    .carousel-content h3 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    .carousel-content h5 {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+
+    .carousel-content br {
+        display: none;
+    }
+
+    /* Fix banner button positioning for mobile */
+    .carousel-content .btn,
+    .carousel-content .btn-lg {
+        margin-top: 15px !important;
+        display: inline-block !important;
+        width: auto !important;
+        min-height: auto !important;
+        padding: 12px 25px !important;
+        font-size: 14px !important;
+        background: #dc3545 !important;
+        color: #fff !important;
+        border: none !important;
+        border-radius: 5px !important;
+        text-decoration: none !important;
+        font-weight: 600 !important;
+        transition: all 0.3s ease !important;
+        line-height: 1.4 !important;
+    }
+
+    .carousel-content .btn:hover,
+    .carousel-content .btn-lg:hover {
+        background: #c82333 !important;
+        transform: translateY(-1px) !important;
+        text-decoration: none !important;
+        color: #fff !important;
+        box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3) !important;
+    }
+
+    .carousel-content h3 {
+        font-size: 24px !important;
+        margin-bottom: 10px !important;
+    }
+
+    .carousel-content h5 {
+        font-size: 16px !important;
+        margin-bottom: 15px !important;
+    }
+
+    /* Search Box */
+    .search-box-4 {
+        position: relative;
+        margin: 20px 15px;
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+    .search-box-4 .form-group {
+        margin-bottom: 15px;
+    }
+
+    .search-box-4 .form-control {
+        height: 45px;
+        font-size: 14px;
+    }
+
+    .range-slider {
+        margin: 15px 0;
+    }
+
+    /* Car Cards */
+    .car-box, .car-box-3 {
+        margin-bottom: 30px;
+    }
+
+    .car-box .car-thumbnail img,
+    .car-box-3 .car-thumbnail img {
+        height: 200px !important;
+        object-fit: cover;
+    }
+
+    .car-box .detail h1,
+    .car-box-3 .detail h1 {
+        font-size: 18px;
+        margin-bottom: 8px;
+    }
+
+    .facilities-list {
+        flex-wrap: wrap;
+    }
+
+    .facilities-list li {
+        font-size: 12px;
+        padding: 4px 8px;
+        margin: 2px;
+    }
+
+    /* Featured Cars Section */
+    .featured-car .main-title h1 {
+        font-size: 28px;
+        text-align: center;
+    }
+
+    .featured-car .main-title p {
+        text-align: center;
+        font-size: 14px;
+    }
+
+    /* Team Section */
+    .our-team .main-title h1 {
+        font-size: 28px;
+        text-align: center;
+    }
+
+    .team-1 .details h4 {
+        font-size: 16px;
+    }
+
+    .team-1 .details h5 {
+        font-size: 14px;
+    }
+
+    /* Footer adjustments */
+    .intro-section {
+        padding: 30px 0;
+    }
+
+    .intro-section .intro-text h3 {
+        font-size: 20px;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    .intro-section .btn {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Modal adjustments */
+    .modal-dialog {
+        margin: 10px;
+        max-width: calc(100% - 20px);
+    }
+
+    .modal-body .row {
+        flex-direction: column;
+    }
+
+    /* Form adjustments */
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+
+    /* Button adjustments */
+    .btn {
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+
+    .btn-lg {
+        padding: 15px 25px;
+        font-size: 16px;
+    }
+
+    /* Hide elements on mobile */
+    .none-580 {
+        display: none !important;
+    }
+
+    .m-hide {
+        display: none !important;
+    }
+
+    /* Slick slider mobile adjustments */
+    .slick-slider-area {
+        margin: 0 -10px;
+    }
+
+    .slick-slide-item {
+        padding: 0 10px;
+    }
+
+    .slick-btn {
+        display: none;
+    }
+
+    /* Price display */
+    .price-box span,
+    .price {
+        font-size: 16px !important;
+        font-weight: bold;
+    }
+
+    /* Content areas padding */
+    .content-area,
+    .content-area-5,
+    .content-area-6 {
+        padding: 40px 0;
+    }
+
+    /* Grid adjustments */
+    .col-lg-4,
+    .col-lg-6,
+    .col-lg-8,
+    .col-lg-9,
+    .col-lg-12 {
+        margin-bottom: 20px;
+    }
+}
+
+/* Extra small devices (phones, less than 576px) */
+@media (max-width: 575px) {
+
+    .container {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .top-header .col-lg-8,
+    .top-header .col-lg-4 {
+        text-align: center;
+    }
+
+    .top-header .list-inline a {
+        display: inline-block;
+        font-size: 11px;
+        margin: 2px 5px;
+    }
+
+    .carousel-content h3 {
+        font-size: 20px;
+    }
+
+    .carousel-content h5 {
+        font-size: 14px;
+    }
+
+    .search-box-4 {
+        margin: 15px 10px;
+        padding: 15px;
+    }
+
+    .main-title h1 {
+        font-size: 24px !important;
+    }
+
+    .car-box .detail h1,
+    .car-box-3 .detail h1 {
+        font-size: 16px;
+    }
+
+    .facilities-list li {
+        font-size: 11px;
+        padding: 3px 6px;
+    }
+
+    .intro-section .intro-text h3 {
+        font-size: 18px;
+    }
+
+    .banner-max-height {
+        height: 350px !important;
+    }
+}
+
+/* Landscape phone adjustments */
+@media (max-width: 768px) and (orientation: landscape) {
+    .banner-max-height {
+        height: 300px !important;
+    }
+
+    .carousel-content {
+        padding: 15px;
+    }
+
+    .search-box-4 {
+        position: absolute;
+        bottom: 20px;
+        left: 15px;
+        right: 15px;
+        background: rgba(255, 255, 255, 0.95);
+    }
+}
+
+/* Tablet adjustments */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .container {
+        max-width: 100%;
+        padding: 0 20px;
+    }
+
+    .car-box .car-thumbnail img,
+    .car-box-3 .car-thumbnail img {
+        height: 220px !important;
+    }
+
+    .main-title h1 {
+        font-size: 32px;
+    }
+
+    .carousel-content h3 {
+        font-size: 28px;
+    }
+
+    .search-box-4 {
+        padding: 25px;
+    }
+}
+
+/* Additional mobile fixes */
+@media (max-width: 768px) {
+
+    /* Fix for contact forms */
+    .contact-2 .form-group {
+        margin-bottom: 15px;
+    }
+
+    .contact-2 .form-control {
+        height: 45px;
+        font-size: 16px;
+    }
+
+    /* Car detail page fixes */
+    .car-details-page .heading-car {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .car-details-page .pull-left,
+    .car-details-page .pull-right {
+        float: none !important;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .car-details-sliders {
+        margin-bottom: 20px;
+    }
+
+    /* Sidebar adjustments */
+    .sidebar-right {
+        margin-top: 30px;
+    }
+
+    .widget {
+        margin-bottom: 20px;
+    }
+
+    /* Login/Register forms */
+    .form-section {
+        padding: 20px;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .form-section h3 {
+        color: #333 !important;
+        text-align: center;
+        margin-bottom: 20px;
+        font-weight: 600;
+    }
+
+    .form-section .logo-2 img {
+        max-height: 50px;
+    }
+
+    .form-box {
+        margin-bottom: 15px;
+        position: relative;
+    }
+
+    .input-text {
+        height: 45px;
+        font-size: 16px;
+        color: #333 !important;
+        background: #fff !important;
+        border: 2px solid #ddd !important;
+        padding: 12px 45px 12px 15px !important;
+        border-radius: 5px;
+        width: 100%;
+    }
+
+    .input-text:focus {
+        border-color: #dc3545 !important;
+        outline: none;
+        box-shadow: 0 0 5px rgba(220, 53, 69, 0.3);
+    }
+
+    .input-text::placeholder {
+        color: #999 !important;
+    }
+
+    .form-box i {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #666 !important;
+        font-size: 16px;
+    }
+
+    .btn-theme {
+        background: #dc3545 !important;
+        color: #fff !important;
+        border: none;
+        padding: 12px 30px;
+        border-radius: 5px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .btn-theme:hover {
+        background: #c82333 !important;
+        transform: translateY(-1px);
+    }
+
+    .extra-login span {
+        color: #666 !important;
+        font-size: 14px;
+    }
+
+    .social-list li a {
+        color: #fff !important;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+
+    .google-bg {
+        background: #dc3545 !important;
+    }
+
+    .facebook-bg {
+        background: #dc3545 !important;
+    }
+
+    .twitter-bg {
+        background: #dc3545 !important;
+    }
+
+    .form-section p {
+        text-align: center;
+        margin-top: 20px;
+        color: #666 !important;
+    }
+
+    .form-section p a {
+        color: #007bff !important;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    .form-section p a:hover {
+        text-decoration: underline;
+    }
+
+    /* Dashboard adjustments */
+    .dashboard .table-responsive {
+        font-size: 14px;
+    }
+
+    .dashboard .table td,
+    .dashboard .table th {
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    /* Footer improvements */
+    .footer {
+        padding: 30px 0;
+    }
+
+    .footer .widget {
+        margin-bottom: 25px;
+        text-align: center;
+    }
+
+    .footer .widget h4 {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+
+    .footer .widget ul li {
+        margin-bottom: 8px;
+    }
+
+    .footer .widget ul li a {
+        font-size: 14px;
+    }
+
+    /* Breadcrumb adjustments */
+    .breadcrumb-areas {
+        text-align: center;
+        padding: 20px 0;
+    }
+
+    .breadcrumb-areas h1 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    .breadcrumbs {
+        justify-content: center;
+    }
+
+    .breadcrumbs li {
+        font-size: 14px;
+    }
+
+    /* Search results page */
+    .sorting-options2 {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .sorting-options2 h5 {
+        margin-bottom: 10px;
+    }
+
+    .sorting-options2 .form-group {
+        margin-bottom: 10px;
+    }
+
+    /* Pagination */
+    .pagination {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .pagination .page-link {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+
+    /* About page team grid */
+    .about-team .team-1 {
+        margin-bottom: 30px;
+    }
+
+    /* Services page */
+    .services-section .service-box {
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    .services-section .service-box h3 {
+        font-size: 20px;
+    }
+
+    /* Contact page */
+    .contact-info-2 .ci-box {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .contact-info-2 .ci-box .icon {
+        margin-bottom: 10px;
+    }
+
+    /* Image gallery fixes */
+    .car-magnify-gallery {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .car-magnify-gallery a {
+        margin: 5px;
+    }
+
+    /* Touch-friendly buttons - exclude banner buttons */
+    .btn:not(.carousel-content .btn):not(.carousel-content .btn-lg),
+    .overlap-btn,
+    .nav-link,
+    .page-link {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Improve tap targets */
+    .top-social-media li a,
+    .list-inline a {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        padding: 8px 12px;
+    }
+}
+
+/* Fix for very small screens */
+@media (max-width: 320px) {
+    .container {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .search-box-4 {
+        margin: 10px 5px;
+        padding: 10px;
+    }
+
+    .carousel-content {
+        padding: 10px;
+    }
+
+    .carousel-content h3 {
+        font-size: 18px;
+    }
+
+    .carousel-content h5 {
+        font-size: 12px;
+    }
+
+    .main-title h1 {
+        font-size: 20px !important;
+    }
+
+    .car-box .detail h1,
+    .car-box-3 .detail h1 {
+        font-size: 14px;
+    }
+}

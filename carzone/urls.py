@@ -22,14 +22,12 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('pages.urls')),
-    path('cars/', include('cars.urls')),  # Added missing slash
-    path('contacts/', include('contacts.urls')),  # Added missing slash
+    path('cars/', include('cars.urls')),
+    path('contacts/', include('contacts.urls')),
     
-    # Keep your accounts.urls for custom views
     path('accounts/', include('accounts.urls')),
     
-    # Make sure this comes AFTER your custom accounts URLs
-    path('allauth/', include('allauth.urls')),  # Change this from 'accounts/' to 'allauth/'
+    path('allauth/', include('allauth.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
